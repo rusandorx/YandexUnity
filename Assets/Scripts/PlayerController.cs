@@ -4,26 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private HingeJoint2D _joint;
-    private DistanceJoint2D _distance;
+    [SerializeField] private HingeJoint2D _lastRopeSegment;
+    [SerializeField] private DistanceJoint2D _rope;
     private Rigidbody2D _rigidbody;
-
-    void Start()
-    {
-        _distance =  GameObject.Find("Rope").GetComponent<DistanceJoint2D>();
-        _joint = GameObject.Find("5").GetComponent<HingeJoint2D>();
-    }
-
-    void Attach()
-    {
-        _joint.connectedBody = _rigidbody;
-        _distance.connectedBody = _rigidbody;
-    }
 
     void Detach()
     {
-        _joint.connectedBody = null;
-        _distance.connectedBody = null;
+        _lastRopeSegment.connectedBody = null;
+        _rope.connectedBody = null;
+        _lastRopeSegment.enabled = false;
+        _rope.enabled = false;
     }
 
     void Update()
