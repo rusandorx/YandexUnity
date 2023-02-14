@@ -41,7 +41,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AddForce.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Scenes" />
