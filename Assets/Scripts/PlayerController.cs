@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private HingeJoint2D _lastRopeSegment;
     [SerializeField] private DistanceJoint2D _rope;
-    private float velocity = 100f; 
+    private readonly float _velocity = 100f; 
     private Rigidbody2D _rigidbody;
 
     void Detach()
@@ -28,6 +28,6 @@ public class PlayerController : MonoBehaviour
         {
             Detach();
         }
-        _rigidbody.AddForce(new Vector2(Input.GetAxis("Horizontal") * velocity * Time.deltaTime, 0));
+        _rigidbody.AddForce(new Vector2(Input.GetAxis("Horizontal") * _velocity * Time.deltaTime, 0));
     }
 }
