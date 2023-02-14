@@ -224,8 +224,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0.01598902, y: -0.6356932}
-  m_ConnectedAnchor: {x: 0.01598902, y: 0.56430686}
+  m_Anchor: {x: -0.009591542, y: -0.64422}
+  m_ConnectedAnchor: {x: -0.009591542, y: 0.55578005}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -372,8 +372,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: -0.5}
-  m_ConnectedAnchor: {x: 0, y: 0.70000005}
+  m_Anchor: {x: 0, y: -0.6326716}
+  m_ConnectedAnchor: {x: 0, y: 0.56732845}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -605,8 +605,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: -0.5}
-  m_ConnectedAnchor: {x: 0, y: 0.70000005}
+  m_Anchor: {x: 0.027439594, y: -0.6509172}
+  m_ConnectedAnchor: {x: 0.027439594, y: 0.5490829}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -666,8 +666,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0.5}
-  m_ConnectedAnchor: {x: 0, y: 1.45}
+  m_Anchor: {x: 0.025127083, y: 0.5804069}
+  m_ConnectedAnchor: {x: 0.0025127083, y: 1.4902035}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -777,8 +777,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: -0.5}
-  m_ConnectedAnchor: {x: 0, y: 0.70000005}
+  m_Anchor: {x: -0.032188147, y: -0.6480655}
+  m_ConnectedAnchor: {x: -0.032188147, y: 0.55193454}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1038,14 +1038,14 @@ DistanceJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 1662914449}
+  m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 2.171
+  m_Distance: 0.005
   m_MaxDistanceOnly: 0
 --- !u!50 &1319018393
 Rigidbody2D:
@@ -1083,7 +1083,7 @@ GameObject:
   - component: {fileID: 1442515989}
   m_Layer: 0
   m_Name: 5
-  m_TagString: Untagged
+  m_TagString: Rope
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1165,20 +1165,20 @@ HingeJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 1662914449}
+  m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -0.8}
-  m_ConnectedAnchor: {x: 0, y: 0.571}
+  m_ConnectedAnchor: {x: 0, y: -1.6}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
+    m_LowerAngle: -30
+    m_UpperAngle: 210
 --- !u!50 &1442515990
 Rigidbody2D:
   serializedVersion: 4
@@ -1360,7 +1360,6 @@ GameObject:
   - component: {fileID: 1662914448}
   - component: {fileID: 1662914447}
   - component: {fileID: 1662914449}
-  - component: {fileID: 1662914450}
   - component: {fileID: 1662914452}
   - component: {fileID: 1662914453}
   m_Layer: 0
@@ -1430,7 +1429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662914446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.171, z: 0}
+  m_LocalPosition: {x: 0.77, y: -0.371, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1458,19 +1457,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1662914450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662914446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e31fcd3f71acc54489f659ffba12016, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _force: 10
 --- !u!114 &1662914452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1483,8 +1469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8622e8b521c54a84c92578d5a3a22f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lastRopeSegment: {fileID: 1442515989}
-  _rope: {fileID: 1319018392}
 --- !u!70 &1662914453
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
