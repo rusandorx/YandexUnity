@@ -36,7 +36,9 @@ public class Slide : MonoBehaviour
 
     void Update()
     {
-        Vector2 alongSurface = Vector2.Perpendicular(_groundNormal);
+        Vector2 alongSurface = Vector2.Perpendicular(_groundNormal.x * _groundNormal.y > 0
+            ? new Vector2(_groundNormal.x, -_groundNormal.y)
+            : _groundNormal);
 
         _targetVelocity = alongSurface * _speed;
     }
