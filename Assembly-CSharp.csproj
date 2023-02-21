@@ -42,8 +42,11 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Rope.cs" />
+     <Compile Include="Assets\Scripts\Slide.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Scenes" />
+     <Folder Include="Assets\Materials" />
      <Folder Include="Assets\Sprites" />
      <Folder Include="Assets\Scripts" />
      <Reference Include="UnityEngine">

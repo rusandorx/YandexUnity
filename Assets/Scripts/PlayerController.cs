@@ -12,13 +12,13 @@ public class PlayerController : MonoBehaviour
 
     private CapsuleCollider2D _collider;
 
-    void Awake()
+    private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<CapsuleCollider2D>();
     }
 
-    void Attach(GameObject ropeGameObject)
+    public void Attach(GameObject ropeGameObject)
     {
         if (_attached)
             return;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         _attached = true;
     }
 
-    void Detach()
+    public void Detach()
     {
         if (!_attached)
             return;
@@ -54,12 +54,12 @@ public class PlayerController : MonoBehaviour
         _attached = false;
     }
 
-    static Vector2 GetMinGameObjectPoint<T>(Transform target) where T : Collider2D =>
+    private static Vector2 GetMinGameObjectPoint<T>(Transform target) where T : Collider2D =>
         target.GetComponent<T>().bounds.min;
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0))
             Detach();
 
         _rigidbody.AddForce(new Vector2(Input.GetAxis("Horizontal") * _swingVelocity * Time.deltaTime, 0));
@@ -67,12 +67,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        string colTag = col.gameObject.tag;
-        switch (colTag)
+        if (col.TryGetComponent<Rope>(out Rope rope))
         {
-            case "Rope":
-                Attach(col.gameObject);
-                break;
+            Attach(col.gameObject);
         }
     }
 }
