@@ -6,10 +6,7 @@ public class Slide : MonoBehaviour
 {
     [SerializeField] private float _minGroundNormalY = .65f;
     [SerializeField] private float _gravityModifier = 1f;
-    [SerializeField] private float _jumpSpeed = 7f;
-    [SerializeField] private bool _multipleJump = false;
 
-    [SerializeField] private Vector2 _velocity;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private float _speed;
 
@@ -17,13 +14,15 @@ public class Slide : MonoBehaviour
 
     private Vector2 _groundNormal;
     private Vector2 _targetVelocity;
-    private bool _grounded;
     private ContactFilter2D _contactFilter;
     private readonly RaycastHit2D[] _hitBuffer = new RaycastHit2D[16];
     private readonly List<RaycastHit2D> _hitBufferList = new List<RaycastHit2D>(16);
 
     private const float MinMoveDistance = 0.001f;
     private const float ShellRadius = 0.01f;
+
+    public Vector2 Velocity { get; set; }
+    public bool Grounded { get; private set; }
 
     void OnEnable()
     {
@@ -44,21 +43,16 @@ public class Slide : MonoBehaviour
             : _groundNormal);
 
         _targetVelocity = alongSurface * _speed;
-
-        if (Input.GetKeyDown(KeyCode.Space) && (_grounded || _multipleJump))
-        {
-            _velocity.y = _jumpSpeed;
-        }
     }
 
     void FixedUpdate()
     {
-        _velocity += Physics2D.gravity * (_gravityModifier * Time.deltaTime);
-        _velocity.x = _targetVelocity.x;
+        Velocity += Physics2D.gravity * (_gravityModifier * Time.deltaTime);
+        Velocity = new Vector2(_targetVelocity.x, Velocity.y);
 
-        _grounded = false;
+        Grounded = false;
 
-        Vector2 deltaPosition = _velocity * Time.deltaTime;
+        Vector2 deltaPosition = Velocity * Time.deltaTime;
         Vector2 moveAlongGround = new Vector2(_groundNormal.y, -_groundNormal.x);
         Vector2 move = moveAlongGround * deltaPosition.x;
 
@@ -89,7 +83,7 @@ public class Slide : MonoBehaviour
                 Vector2 currentNormal = hit2D.normal;
                 if (currentNormal.y > _minGroundNormalY)
                 {
-                    _grounded = true;
+                    Grounded = true;
                     if (yMovement)
                     {
                         _groundNormal = currentNormal;
@@ -97,10 +91,10 @@ public class Slide : MonoBehaviour
                     }
                 }
 
-                float projection = Vector2.Dot(_velocity, currentNormal);
+                float projection = Vector2.Dot(Velocity, currentNormal);
                 if (projection < 0)
                 {
-                    _velocity -= projection * currentNormal;
+                    Velocity -= projection * currentNormal;
                 }
 
                 float modifiedDistance = hit2D.distance - ShellRadius;
